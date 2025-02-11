@@ -21,7 +21,7 @@ jobs:
         run: mvn clean compile
 
       - name: Dependencies Warmup
-        run: mvn dependency:offline
+        run: mvn dependency:go-offline
 
       - name: Test GET for </cards> endpoint
         run: mvn -Dtest=GetCardsTests test
