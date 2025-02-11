@@ -1,0 +1,56 @@
+name: Run API tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Build Project
+        run: mvn clean compile
+
+      - name: Test GET for </cards> endpoint
+        run: mvn -Dtest=GetCardsTests test
+        continue-on-error: true
+
+      - name: Test GET for </cards/:id:> endpoint
+        run: mvn -Dtest=GetCardByIdTests test
+        continue-on-error: true
+
+      - name: Test GET for </sets> endpoint
+        run: mvn -Dtest=GetSetsTests test
+        continue-on-error: true
+
+      - name: Test GET for </sets/:id:> endpoint
+        run: mvn -Dtest=GetSetByIdTests test
+        continue-on-error: true
+
+      - name: Test GET for </types> endpoint
+        run: mvn -Dtest=GetTypesTests test
+        continue-on-error: true
+
+      - name: Test GET for </subtypes> endpoint
+        run: mvn -Dtest=GetSubtypesTests test
+        continue-on-error: true
+
+      - name: Test GET for </supertypes> endpoint
+        run: mvn -Dtest=GetSupertypesTests test
+        continue-on-error: true
+
+      - name: Test GET for </formats> endpoint
+        run: mvn -Dtest=GetFormatsTests test
+        continue-on-error: true
