@@ -1,0 +1,22 @@
+[
+  {
+    "code": "KTK",
+    "name": "Khans of Tarkir",
+    "type": "expansion",
+    "releaseDate": "2014-09-26",
+    "block": "Khans of Tarkir"
+  },
+  {
+    "code": "ISD",
+    "name": "Innistrad",
+    "type": "expansion",
+    "releaseDate": "2011-09-30",
+    "block": "Innistrad"
+  },
+  {
+    "code": "VMA",
+    "name": "Vintage Masters",
+    "type": "masters",
+    "releaseDate": "2014-06-16"
+  }
+]

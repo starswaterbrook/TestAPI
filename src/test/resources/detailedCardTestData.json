@@ -1,0 +1,81 @@
+[
+  {
+    "id": "386616",
+    "name": "Narset, Enlightened Master",
+    "layout": "normal",
+    "cmc": 6,
+    "colors": [
+      "R",
+      "U",
+      "W"
+    ],
+    "colorIdentity": [
+      "R",
+      "U",
+      "W"
+    ],
+    "type": "Legendary Creature — Human Monk",
+    "supertypes": [
+      "Legendary"
+    ],
+    "types": [
+      "Creature"
+    ],
+    "subtypes": [
+      "Human",
+      "Monk"
+    ],
+    "rarity": "Mythic",
+    "set": "KTK",
+    "setName": "Khans of Tarkir",
+    "text": "First strike, hexproof\nWhenever Narset, Enlightened Master attacks, exile the top four cards of your library. Until end of turn, you may cast noncreature spells from among those cards without paying their mana costs.",
+    "artist": "Magali Villeneuve",
+    "number": "190",
+    "power": "3",
+    "toughness": "2"
+  },
+  {
+    "id": "409574",
+    "name": "Strip Mine",
+    "layout": "normal",
+    "cmc": 0,
+    "colors": null,
+    "colorIdentity": null,
+    "type": "Land",
+    "supertypes": null,
+    "types": ["Land"],
+    "subtypes": null,
+    "rarity": "Mythic",
+    "set": "EXP",
+    "setName": "Zendikar Expeditions",
+    "text": "{T}: Add {C}.\n{T}, Sacrifice Strip Mine: Destroy target land.",
+    "artist": "Howard Lyon",
+    "number": "43",
+    "power": null,
+    "toughness": null
+  },
+  {
+    "id": "409580",
+    "name": "Champion of the Parish",
+    "layout": "normal",
+    "cmc": 1,
+    "colors": [
+      "W"
+    ],
+    "colorIdentity": [
+      "W"
+    ],
+    "type": "Creature — Human Soldier",
+    "supertypes": null,
+    "types": ["Creature"],
+    "subtypes": ["Human", "Soldier"],
+    "rarity": "Rare",
+    "set": "DDQ",
+    "setName": "Duel Decks: Blessed vs. Cursed",
+    "text": "Whenever another Human enters the battlefield under your control, put a +1/+1 counter on Champion of the Parish.",
+    "artist": "Svetlin Velinov",
+    "number": "4",
+    "power": "1",
+    "toughness": "1"
+  }
+]

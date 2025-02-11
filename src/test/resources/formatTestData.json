@@ -1,0 +1,27 @@
+{
+  "formats": [
+    "Alchemy",
+    "Brawl",
+    "Commander",
+    "Duel",
+    "Explorer",
+    "Future",
+    "Gladiator",
+    "Historic",
+    "Historicbrawl",
+    "Legacy",
+    "Modern",
+    "Oathbreaker",
+    "Oldschool",
+    "Pauper",
+    "Paupercommander",
+    "Penny",
+    "Pioneer",
+    "Predh",
+    "Premodern",
+    "Standard",
+    "Standardbrawl",
+    "Timeless",
+    "Vintage"
+  ]
+}
