@@ -20,6 +20,9 @@ jobs:
       - name: Build Project
         run: mvn clean compile
 
+      - name: Dependencies Warmup
+        run: mvn dependency:offline
+
       - name: Test GET for </cards> endpoint
         run: mvn -Dtest=GetCardsTests test
         continue-on-error: true
