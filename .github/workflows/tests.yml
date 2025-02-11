@@ -23,6 +23,7 @@ jobs:
       - name: Dependencies Warmup
         run: |
           mvn dependency:go-offline
+          mvn dependency:resolve -DincludeArtifactIds=testng,surefire-testng,surefire-api,surefire-booter
           mvn test -DskipTests
 
       - name: Test GET for </cards> endpoint
