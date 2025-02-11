@@ -18,10 +18,10 @@ jobs:
           java-version: '21'
 
       - name: Build Project
-        run: mvn clean compile
+        run: mvn clean install -o
 
       - name: Dependencies Warmup
-        run: mvn dependency:go-offline
+        run: mvn dependency:resolve dependency:resolve-plugins dependency:go-offline dependency:tree
 
       - name: Test GET for </cards> endpoint
         run: mvn -Dtest=GetCardsTests test
