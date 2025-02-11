@@ -17,11 +17,13 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Build Project
+      - name: Compile Project
         run: mvn clean compile
 
       - name: Dependencies Warmup
-        run: mvn dependency:resolve dependency:resolve-plugins dependency:go-offline dependency:tree
+        run: |
+          mvn dependency:go-offline
+          mvn test -DskipTests
 
       - name: Test GET for </cards> endpoint
         run: mvn -Dtest=GetCardsTests test
