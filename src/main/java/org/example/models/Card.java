@@ -49,7 +49,6 @@ public class Card {
         this.toughness = toughness;
     }
 
-    // Getter and Setter methods
     public String getId() {
         return id;
     }

@@ -8,6 +8,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.example.models.Card;
+import io.restassured.response.Response;
+import org.example.utils.ApiResponseParser;
+import org.testng.Assert;
 
 
 public class GetCardByIdTests extends BaseTest {
@@ -33,29 +36,21 @@ public class GetCardByIdTests extends BaseTest {
     }
 
     @Test(dataProvider = "detailedCardData", dataProviderClass = CardDataProviders.class)
-    public void testGetCardById_Detailed(Card card) {
-        given()
-                .pathParam("id", card.getId())
+    public void testGetCardById_Detailed(Card testCard) {
+        Response response = given()
+                .pathParam("id", testCard.getId())
                 .when()
                 .get("/cards/{id}")
                 .then()
                 .statusCode(200)
-                .body("card.name", equalTo(card.getName()))
-                .body("card.layout", equalTo(card.getLayout()))
-                .body("card.cmc", equalTo((float)card.getCmc()))
-                .body("card.colors", equalTo(card.getColors()))
-                .body("card.colorIdentity", equalTo(card.getColorIdentity()))
-                .body("card.type", equalTo(card.getType()))
-                .body("card.supertypes", equalTo(card.getSupertypes()))
-                .body("card.types", equalTo(card.getTypes()))
-                .body("card.subtypes", equalTo(card.getSubtypes()))
-                .body("card.rarity", equalTo(card.getRarity()))
-                .body("card.set", equalTo(card.getSet()))
-                .body("card.setName", equalTo(card.getSetName()))
-                .body("card.text", equalTo(card.getText()))
-                .body("card.artist", equalTo(card.getArtist()))
-                .body("card.number", equalTo(card.getNumber()))
-                .body("card.power", equalTo(card.getPower()))
-                .body("card.toughness", equalTo(card.getToughness()));
+                .extract()
+                .response();
+
+        try {
+            Card responseCard = ApiResponseParser.parseResponseToCard(response);
+            Assert.assertEquals(responseCard, testCard, "The response card data does not match the test card data.");
+        } catch (Exception e) {
+            Assert.fail("Failed to parse response into Card object: " + e.getMessage());
+        }
     }
 }

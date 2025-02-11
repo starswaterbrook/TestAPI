@@ -8,6 +8,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.example.models.CardSet;
+import io.restassured.response.Response;
+import org.example.utils.ApiResponseParser;
+import org.testng.Assert;
 
 
 public class GetSetByIdTests extends BaseTest {
@@ -33,18 +36,22 @@ public class GetSetByIdTests extends BaseTest {
     }
 
     @Test(dataProvider = "detailedSetData", dataProviderClass = SetDataProviders.class)
-    public void testGetSetByCode_Detailed(CardSet set) {
-        given()
-                .pathParam("code", set.getCode())
+    public void testGetSetByCode_Detailed(CardSet testSet) {
+        Response response = given()
+                .pathParam("code", testSet.getCode())
                 .when()
                 .get("/sets/{code}")
                 .then()
                 .statusCode(200)
-                .body("set.name", equalTo(set.getName()))
-                .body("set.code", equalTo(set.getCode()))
-                .body("set.releaseDate", equalTo(set.getReleaseDate()))
-                .body("set.type", equalTo(set.getType()))
-                .body("set.block", equalTo(set.getBlock()));
+                .extract()
+                .response();
+
+        try {
+            CardSet responseSet = ApiResponseParser.parseResponseToCardSet(response);
+            Assert.assertEquals(responseSet, testSet, "The response set data does not match the test set data.");
+        } catch (Exception e) {
+            Assert.fail("Failed to parse response into CardSet object: " + e.getMessage());
+        }
     }
 
     @Test(dataProvider = "validBoosterSetCodes", dataProviderClass = SetDataProviders.class)
